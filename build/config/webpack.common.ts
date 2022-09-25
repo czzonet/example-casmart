@@ -1,7 +1,6 @@
 import { Configuration } from "webpack";
 import { projectName, projectRoot, resolvePath } from "../env";
 import webpackBar from "webpackbar";
-import webpackBuildNotifier from "webpack-build-notifier";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
@@ -13,7 +12,7 @@ export const commonConfig: Configuration = {
   context: projectRoot,
   entry: resolvePath(projectRoot, "./src/index.tsx"),
   output: {
-    // publicPath: "/",
+    publicPath: "/",
     path: resolvePath(projectRoot, "./dist"),
     filename: "js/[name].[contenthash].js",
     hashSalt: projectName,
@@ -88,22 +87,24 @@ export const commonConfig: Configuration = {
       name: "template-react",
       color: "#61dafb",
     }),
-    new webpackBuildNotifier(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: resolvePath(projectRoot, "./public/index.html"),
     }),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: "*",
-    //       to: resolvePath(projectRoot, "./dist"),
-    //       context: resolvePath(projectRoot, "./public"),
-    //       filter: (resourcePath) =>
-    //         resourcePath != resolvePath(projectRoot, "./public/index.html"),
-    //     },
-    //   ],
-    // }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "*",
+          to: resolvePath(projectRoot, "./dist"),
+          context: resolvePath(projectRoot, "./public"),
+          filter: (resourcePath) => {
+            const r = !resourcePath.endsWith("index.html");
+            // console.log(r);
+            return r;
+          },
+        },
+      ],
+    }),
     // new WebpackBundleAnalyzer.BundleAnalyzerPlugin(),
     new ForkTsCheckerWebpackPlugin({ async: false }),
   ],

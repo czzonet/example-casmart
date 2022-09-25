@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { Hello } from "../components/Hello";
 
-export const HomePage = () => {
+import { PageHomeHeader } from "./home/PageHomeHeader";
+
+export const PageHome = () => {
   return (
     <Style>
-      <Hello></Hello>
+      <PageHomeHeader></PageHomeHeader>
     </Style>
   );
 };
