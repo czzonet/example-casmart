@@ -45,7 +45,7 @@ const Style = styled.div`
   gap: 5px;
   padding-block: 16px 10px;
   box-shadow: 0 -2px 20px hsla(0, 0%, 0%, 0.1);
-  z-index: 1;
+  /* z-index: 1; */ /** 注意：和模态框的冲突？ */
 
   > button {
     position: relative;

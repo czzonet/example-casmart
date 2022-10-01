@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import imgLogo from "../../assets/images/logo.svg";
 import { PageHomeHeaderAction } from "./header/PageHomeHeaderAction";
@@ -6,6 +6,7 @@ import { PageHomeHeaderMenuIcon } from "./header/PageHomeHeaderMenuIcon";
 import { PageHomeHeaderNav } from "./header/PageHomeHeaderNav";
 
 export const PageHomeHeader: React.FC = () => {
+  const [state菜单的显示, state设置菜单的显示] = useState(false);
   return (
     <Style>
       <input type="text" placeholder="Search Product..." />
@@ -18,9 +19,14 @@ export const PageHomeHeader: React.FC = () => {
 
       <PageHomeHeaderAction></PageHomeHeaderAction>
 
-      <PageHomeHeaderMenuIcon></PageHomeHeaderMenuIcon>
+      <PageHomeHeaderMenuIcon
+        click={() => state设置菜单的显示(true)}
+      ></PageHomeHeaderMenuIcon>
 
-      <PageHomeHeaderNav></PageHomeHeaderNav>
+      <PageHomeHeaderNav
+        visible={state菜单的显示}
+        close={() => state设置菜单的显示(false)}
+      ></PageHomeHeaderNav>
     </Style>
   );
 };

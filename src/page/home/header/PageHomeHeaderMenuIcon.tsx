@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-export const PageHomeHeaderMenuIcon: React.FC = () => {
+export const PageHomeHeaderMenuIcon: React.FC<{ click: () => void }> = ({
+  click,
+}) => {
   return (
-    <Style aria-label="Open Menu">
+    <Style aria-label="Open Menu" onClick={click}>
       <span></span>
       <span></span>
       <span></span>
@@ -16,6 +18,7 @@ const Style = styled.div`
   flex-direction: column;
   gap: 4px;
   padding: 8px;
+  cursor: pointer;
 
   > span {
     width: 20px;
