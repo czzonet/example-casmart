@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import classNames from "classnames";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import imgLogo from "../../assets/images/logo.svg";
 import { PageHomeHeaderAction } from "./header/PageHomeHeaderAction";
@@ -7,8 +8,24 @@ import { PageHomeHeaderNav } from "./header/PageHomeHeaderNav";
 
 export const PageHomeHeader: React.FC = () => {
   const [state菜单的显示, state设置菜单的显示] = useState(false);
+  const [state标题栏的显示, state设置标题栏的显示] = useState(false);
+
+  useEffect(() => {
+    // TODO: 节流
+    window.addEventListener("scroll", function () {
+      if (window.scrollY >= 200) {
+        state设置标题栏的显示(true);
+      } else {
+        state设置标题栏的显示(false);
+      }
+    });
+    return () => {
+      window.removeEventListener("scroll", () => 0);
+    };
+  }, []);
+
   return (
-    <Style>
+    <Style className={classNames({ active: state标题栏的显示 })}>
       <input type="text" placeholder="Search Product..." />
       <button aria-label="Search">
         {/* <ion-icon name="search-outline"></ion-icon> */}
