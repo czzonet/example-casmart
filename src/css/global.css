@@ -51,3 +51,92 @@ body {
   background: var(--white);
   padding-block: 70px;
 }
+
+/*-----------------------------------*\
+ * #REUSED STYLE
+\*-----------------------------------*/
+
+.container {
+  padding-inline: 15px;
+}
+
+a,
+button {
+  transition: var(--transition-1);
+}
+
+h3 > a {
+  color: inherit;
+}
+
+.h1,
+.h2,
+.h3,
+.h4 {
+  color: var(--eerie-black);
+  font-weight: var(--fw-600);
+}
+
+.h1 {
+  font-size: var(--fs-1);
+  line-height: 1;
+}
+
+.h2 {
+  font-size: var(--fs-2);
+}
+
+.h3 {
+  font-size: var(--fs-6);
+}
+
+.h4 {
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+}
+
+.btn {
+  background: var(--background, var(--eerie-black));
+  color: var(--color, var(--white));
+  font-weight: var(--fw-600);
+  height: var(--height, 60px);
+  padding-inline: 50px;
+  border: 1px solid var(--border-color, var(--eerie-black));
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary:is(:hover, :focus) {
+  --background: var(--white);
+  --color: var(--eerie-black);
+  --border-color: var(--eerie-black);
+}
+
+.btn-secondary {
+  --height: 50px;
+  --background: var(--white);
+  --color: var(--eerie-black);
+  --border-color: var(--white);
+}
+
+.btn-secondary:is(:hover, :focus) {
+  --background: var(--eerie-black);
+  --color: var(--white);
+  --border-color: var(--eerie-black);
+}
+
+.btn-outline {
+  --height: 50px;
+  --background: var(--white);
+  --color: var(--eerie-black);
+  --border-color: var(--eerie-black);
+  padding-inline: 40px;
+}
+
+.btn-outline:is(:hover, :focus) {
+  --background: var(--eerie-black);
+  --color: var(--white);
+  --border-color: var(--eerie-black);
+}

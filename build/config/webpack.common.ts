@@ -77,7 +77,7 @@ export const commonConfig: Configuration = {
         ],
       },
       {
-        test: /\.svg$/,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         use: ["file-loader"],
       },
     ],
