@@ -140,3 +140,11 @@ h3 > a {
   --color: var(--white);
   --border-color: var(--eerie-black);
 }
+
+.section {
+  padding-block: var(--section-padding);
+}
+
+.w-100 {
+  width: 100%;
+}

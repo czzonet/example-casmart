@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import imgHero from "../../assets/images/hero-banner.jpg";
+import { PageHomeMainCategory } from "./main/PageHomeMainCategory";
 import { PageHomeMainService } from "./main/PageHomeMainService";
 
 export const PageHomeMain: React.FC = () => {
@@ -16,6 +17,8 @@ export const PageHomeMain: React.FC = () => {
       </article>
 
       <PageHomeMainService></PageHomeMainService>
+
+      <PageHomeMainCategory></PageHomeMainCategory>
     </Style>
   );
 };
