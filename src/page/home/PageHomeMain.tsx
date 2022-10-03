@@ -3,9 +3,10 @@ import styled from "styled-components";
 
 import imgHero from "../../assets/images/hero-banner.jpg";
 
+import { PageHomeMainService } from "./main/PageHomeMainService";
 import { PageHomeMainCategory } from "./main/PageHomeMainCategory";
 import { PageHomeMainProduct } from "./main/PageHomeMainProduct";
-import { PageHomeMainService } from "./main/PageHomeMainService";
+import { PageHomeMainBlog } from "./main/PageHomeMainBlog";
 
 export const PageHomeMain: React.FC = () => {
   return (
@@ -23,6 +24,8 @@ export const PageHomeMain: React.FC = () => {
       <PageHomeMainCategory></PageHomeMainCategory>
 
       <PageHomeMainProduct></PageHomeMainProduct>
+
+      <PageHomeMainBlog></PageHomeMainBlog>
     </Style>
   );
 };
