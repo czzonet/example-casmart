@@ -1,4 +1,8 @@
-import { Configuration } from "webpack";
+import {
+  Configuration,
+  HotModuleReplacementPlugin,
+  NoEmitOnErrorsPlugin,
+} from "webpack";
 import { projectName, projectRoot, resolvePath } from "../env";
 import webpackBar from "webpackbar";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
@@ -10,7 +14,10 @@ import { tslOption } from "./tslOption";
 
 export const commonConfig: Configuration = {
   context: projectRoot,
-  entry: resolvePath(projectRoot, "./src/index.tsx"),
+  entry: [
+    "webpack-hot-middleware/client?noInfo=true&reload=true",
+    resolvePath(projectRoot, "./src/index.tsx"),
+  ],
   output: {
     publicPath: "/",
     path: resolvePath(projectRoot, "./dist"),
@@ -83,6 +90,8 @@ export const commonConfig: Configuration = {
     ],
   },
   plugins: [
+    new HotModuleReplacementPlugin(),
+    new NoEmitOnErrorsPlugin(),
     new webpackBar({
       name: "template-react",
       color: "#61dafb",

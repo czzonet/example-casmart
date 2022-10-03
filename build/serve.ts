@@ -24,7 +24,12 @@ const setupCompilerMiddleware = (compiler: any, app: Express) => {
   app.use(cors());
   app.use(historyFallback({}));
   app.use(webpackDevMiddleware(compiler, {}));
-  app.use(webpackHotMiddleware(compiler, {}));
+  app.use(
+    webpackHotMiddleware(compiler, {
+      log: false,
+      heartbeat: 2000,
+    })
+  );
 };
 
 /** 热重载服务器 */
