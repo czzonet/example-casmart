@@ -15,7 +15,7 @@ import { tslOption } from "./tslOption";
 export const commonConfig: Configuration = {
   context: projectRoot,
   entry: [
-    "webpack-hot-middleware/client?noInfo=true&reload=true",
+    "webpack-hot-middleware/client?/__webpack_hmr&timeout=2000&reload=false",
     resolvePath(projectRoot, "./src/index.tsx"),
   ],
   output: {

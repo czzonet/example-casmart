@@ -26,8 +26,9 @@ const setupCompilerMiddleware = (compiler: any, app: Express) => {
   app.use(webpackDevMiddleware(compiler, {}));
   app.use(
     webpackHotMiddleware(compiler, {
-      log: false,
-      heartbeat: 2000,
+      log: console.log,
+      path: "/__webpack_hmr",
+      heartbeat: 10 * 1000,
     })
   );
 };
@@ -40,6 +41,7 @@ export const start = async () => {
   const app = express();
   const compiler = webpack(devConfig);
   setupCompilerMiddleware(compiler, app);
+  // app.use(express.static(commonConfig.output?.path || ""));
 
   const httpServer = http.createServer(app).listen(port, HOST, () => {
     const tip = `DevServer is running at ${chalk.magenta.underline(address)} ${
@@ -48,7 +50,7 @@ export const start = async () => {
 
     console.log(tip);
 
-    open(address);
+    // open(address);
   });
 
   process.on("SIGINT", () => {
